@@ -14,4 +14,4 @@ const MyMovie = ({children}) => {
   )
 }
 
-export default Movie
+export default MyMovie
