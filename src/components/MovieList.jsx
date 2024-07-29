@@ -1,9 +1,9 @@
 import React, {useContext, useEffect} from 'react'
-import MyMovie from '../Movie'
+import {Movie} from '../Movie'
 
 const MovieList = () => {
   let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=messi&key=AIzaSyBuNK8py5fAhr09mmribVdjeS5GJjeJQjI"
-  let {movie, setMovie, mySearch, setMySearch, select, setSelect} = useContext(MyMovie)
+  let {movie, setMovie, mySearch, setMySearch, select, setSelect} = useContext(Movie)
   useEffect(() => {
     let getMyMovie = async () => {
       let response = await fetch(url)
@@ -11,7 +11,8 @@ const MovieList = () => {
       console.log(data) 
     }
     getMyMovie()
-  , []})
+  }
+  , [])
   return (
     <div>MovieList</div>
   )
