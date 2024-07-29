@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import {Movie} from '../Movie'
 
-let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=messi&key=AIzaSyBuNK8py5fAhr09mmribVdjeS5GJjeJQjI&maxResults=10"
+// let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=messi&key=AIzaSyBuNK8py5fAhr09mmribVdjeS5GJjeJQjI&maxResults=10"
 
 const MovieList = () => {
 
@@ -20,7 +20,14 @@ const MovieList = () => {
   }
   , [setMovie, setSelect])
   return (
-    <div>{movie.map}</div>
+    <div>{movie.map(() => {
+      return (
+        <div key={movie.id}>
+          {/* <h1>{movie.snippet.title}</h1>
+          <p>{movie.snippet.description}</p> */}
+        </div>
+      )
+    })}</div>
   )
 }
 
