@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import MovieItem from './MovieItem'
 import {Movie} from '../Movie'
 
-let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=messi&key=AIzaSyBuNK8py5fAhr09mmribVdjeS5GJjeJQjI&maxResults=10"
+let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=emmanuel%20iren&key=${process.env.REACT_APP_API_KEY}&maxResults=10`
 
 const MovieList = () => {
 
