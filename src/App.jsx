@@ -6,10 +6,10 @@ import Home from './components/Home';
 
 function App() {
   return (
-    // <MyMovie>
-    //   <MovieList></MovieList>
-    // </MyMovie>
-    <Home />
+    <MyMovie>
+      <MovieList></MovieList>
+    </MyMovie>
+    // <Home />
   );
 }
 
