@@ -1,44 +1,53 @@
-import React, { useContext, useEffect } from 'react'
-import MovieItem from './MovieItem'
-import { Movie } from '../Movie'
+import React, {useState, useEffect, useContext} from 'react';
+import { Movie } from '../Movie';
 
-let number = `&maxResults=10`
+import MovieItem from './MovieItem';
+const myurl ="https://youtube.com/video/"
 
+const search = "terminator" 
+// const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&?${search}&key=AIzaSyBrae2VzoOcRy4PJCvgUUwBcS-v8cVZR5Y&maxResults=50`
+const url = 'https://youtube.googleapis.com/youtube/v3/'
+const api_key = `?part=snippet&key=${process.env.REACT_APP_API_KEY}&q=`
+const number = '&maxResults=50'
+// https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=terminator&key=AIzaSyBrae2VzoOcRy4PJCvgUUwBcS-v8cVZR5Y&maxResults=50
 const MovieList = () => {
+    const { movie, setMovie, searchKey, selectedMovie, setSelectedMovie} = useContext(Movie); 
 
-  
-  let { movie, setMovie, mySearch, setMySearch, select, setSelect } = useContext(Movie)
-  useEffect(() => {
-    // let type = mySearch ? 'search' : 'search'
-    let getMyMovie = async () => {
-      let storedData = localStorage.getItem("tunde")
-      if (storedData) {
-        setMovie(JSON.parse(storedData))
-        console.log(storedData)
-        console.log(movie)
-      }
-      else {
-        let response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${mySearch}&key=${process.env.REACT_APP_API_KEY}${number}`)
-        let data = await response.json()
-        localStorage.setItem("tunde", JSON.stringify(data.items))
-       
-        // console.log(data)
-        // setMovie(data.items)
+    useEffect(() =>{
+        const getMovie = async () => {
+            const type = searchKey ? 'search' : 'search';
+          
+            const response = await fetch(`${url}${type}${api_key}${searchKey}${number}`)
+            // const response = await fetch(`https://youtube.googleapis.com/youtube/v3/${type}?part=snippet&key=AIzaSyBrae2VzoOcRy4PJCvgUUwBcS-v8cVZR5Y&q=${searchKey}&maxResults=50`)
+            // 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD8PtGw7UNYhfOGaYrzITtYoPcES3hN7iY&q'
+            const movie = await response.json();
+            setMovie(movie.items) 
+            let currentIndex = 0; // Initialize the index counter
 
-        // console.log(movie)
-        setSelect(movie[0])
-      }
+            // Set interval to change the selected movie
+            const intervalId = setInterval(() => {
+                // Check if the currentIndex is within the bounds of movie items
+                if (currentIndex < movie.items.length) {
+                    setSelectedMovie(movie.items[currentIndex]); // Set the selected movie
+                    currentIndex++; // Increment the index for the next iteration
+                } else {
+                    clearInterval(intervalId); // Stop the interval if all items have been processed
+                }
+            }, 3000);
+            console.log(movie.items);
+        }
+        getMovie() 
+    },[  setMovie, searchKey,  setSelectedMovie ]);
 
-    }
-    getMyMovie()
-  }
-    , [setMovie, setSelect])
   return (
-    <div>{movie.map((x, p) => {
-      return (
-        <MovieItem tunde={x} key={p++} />
-      )
-    })}</div>
+         
+    <div style={{display:"flex", flexWrap:"wrap",  justifyContent:'center'}}>
+        {movie.map((x, index) => (
+
+         <MovieItem key={index} x={x}/>
+        ))}
+    </div>
+  
   )
 }
 

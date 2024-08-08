@@ -1,17 +1,20 @@
-import React, { createContext, useState } from 'react';
+import React, {createContext, useState}  from 'react';
 
 
-export const Movie = createContext() // Create a context object
+export const Movie = createContext();
 
-const MyMovie = ({children}) => {
-    const [movie, setMovie] = useState([]); // Create a state variable called movie
-    const [mySearch, setMySearch] = useState(''); // Create a state variable called mySearch
-    const [select, setSelect] = useState(''); // Create a state variable called select
+const MovieContext = ({children}) => {
+    const [movie, setMovie] = useState([])
+    const [searchKey, setSearchKey] = useState('')
+    const [selectedMovie, setSelectedMovie] = useState('')
+
+
+
   return (
-    <Movie.Provider value={{movie, setMovie, mySearch, setMySearch, select, setSelect}}>
+    <Movie.Provider value={{movie, setMovie, searchKey, setSearchKey, selectedMovie, setSelectedMovie}}>
         {children}
     </Movie.Provider>
   )
 }
 
-export default MyMovie
+export default MovieContext

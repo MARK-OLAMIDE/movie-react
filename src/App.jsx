@@ -1,19 +1,33 @@
+import {  Routes, Route } from 'react-router-dom';
 import './App.css';
-import React from 'react';
-import MyMovie from './Movie';
-import MovieList from './components/MovieList';
-import Home from './components/Home';
+import MovieContext from './Movie';
+
+
+
 import Form from './components/Form';
+
+import MovieList from './components/MovieList';
 
 function App() {
   return (
-    <>
-    <Form />
-    <MyMovie>
-      <MovieList></MovieList>
-    </MyMovie>
-    {/* <Home /> */}
-    </>
+   
+    // <Routes>
+    //   <Route path="/"  element={
+
+<MovieContext>
+  <Form />
+  {/* <Header/> */}
+<MovieList />
+
+</MovieContext> 
+    //   }/>
+    
+    
+    // </Routes>
+        
+     
+
+  
   );
 }
 

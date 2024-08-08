@@ -2,16 +2,18 @@ import React, {useContext, useState} from 'react'
 import { Movie } from '../Movie'
 
 const Form = () => {
-    let {setMySearch} = useContext(Movie)
     const [film, setFilm] = useState('')
+    let { mySearch, setSearchKey} = useContext(Movie);
+    
     const [message, setMessage] = useState('')
-    const checkValue = (e) => {
-        setFilm(e.target.value)
-    }
+  
     const prosper = (e) => {
-        setMySearch(film)
+        setSearchKey(film)
         e.preventDefault()
         setFilm('')
+    }
+    const checkValue = (e) => {
+        setFilm(e.target.value)
     }
     console.log(message)
     // console.log(film)
