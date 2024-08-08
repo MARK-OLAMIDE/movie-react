@@ -24,16 +24,7 @@ const MovieList = () => {
             setMovie(movie.items) 
             let currentIndex = 0; // Initialize the index counter
 
-            // Set interval to change the selected movie
-            const intervalId = setInterval(() => {
-                // Check if the currentIndex is within the bounds of movie items
-                if (currentIndex < movie.items.length) {
-                    setSelectedMovie(movie.items[currentIndex]); // Set the selected movie
-                    currentIndex++; // Increment the index for the next iteration
-                } else {
-                    clearInterval(intervalId); // Stop the interval if all items have been processed
-                }
-            }, 3000);
+          
             console.log(movie.items);
         }
         getMovie() 
