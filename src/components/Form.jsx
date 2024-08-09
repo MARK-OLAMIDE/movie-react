@@ -18,9 +18,9 @@ const Form = () => {
     console.log(message)
     // console.log(film)
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', alignItems: 'center', backgroundColor: '#0F0F0F', borderBottom: '1px solid #303030' }}>
             <div>
-                <h1>Movie</h1>
+                <h1 style={{color: 'white'}}>Movie</h1>
             </div>
             <form style={{ display: 'flex', gap: '20px' }} onSubmit={prosper}>
                 <input value={film} onChange={checkValue} type="text" placeholder='Search your movie here' />
