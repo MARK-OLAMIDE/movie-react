@@ -1,6 +1,8 @@
 
 import './App.css';
 import MovieContext from './Movie';
+import { Routes, Route } from 'react-router-dom';
+import Video from './components/Video';
 
 
 
@@ -10,23 +12,27 @@ import MovieList from './components/MovieList';
 
 function App() {
   return (
-   
-    
 
-<MovieContext>
-  <Form />
- 
-<MovieList />
+    <>
 
-</MovieContext> 
-   
-    
-    
- 
-        
-     
 
-  
+
+      <Routes>
+        <Route path="/" element={
+          <MovieContext>
+            <Form />
+
+            <MovieList />
+
+          </MovieContext>
+        } />
+          <Route path="/video/:id" element={<Video />} />
+      </Routes>
+
+    </>
+
+
+
   );
 }
 
