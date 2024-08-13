@@ -20,7 +20,7 @@ const MovieList = () => {
 
       const response = await fetch(`${url}${type}${api_key}${searchKey}${number}`)
       // const response = await fetch(`https://youtube.googleapis.com/youtube/v3/${type}?part=snippet&key=guess&q=${searchKey}&maxResults=50`)
-      // 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCeNb33TYA-c6tKRcJYUMI0tRkv_u_XSqk'
+      // 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=guess'
       const movie = await response.json();
       setMovie(movie.items)
       let currentIndex = 0; // Initialize the index counter
