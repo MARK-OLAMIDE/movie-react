@@ -9,6 +9,7 @@ import Video from './components/Video';
 import Form from './components/Form';
 
 import MovieList from './components/MovieList';
+import Banner from './components/Banner';
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
         <Route path="/" element={
           <MovieContext>
             <Form />
-
+            <Banner />
             <MovieList />
-
+            
           </MovieContext>
         } />
           <Route path="/video/:id" element={<Video />} />

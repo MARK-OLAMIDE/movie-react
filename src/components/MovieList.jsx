@@ -20,11 +20,12 @@ const MovieList = () => {
 
       const response = await fetch(`${url}${type}${api_key}${searchKey}${number}`)
       // const response = await fetch(`https://youtube.googleapis.com/youtube/v3/${type}?part=snippet&key=guess&q=${searchKey}&maxResults=50`)
-      // 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyD8PtGw7UNYhfOGaYrzITtYoPcES3hN7iY&q'
+      // 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCeNb33TYA-c6tKRcJYUMI0tRkv_u_XSqk'
       const movie = await response.json();
       setMovie(movie.items)
       let currentIndex = 0; // Initialize the index counter
 
+      setSelectedMovie(movie.items[currentIndex]); // Set the selected movie to the first movie in the list
 
       console.log(movie.items);
     }
