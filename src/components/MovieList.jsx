@@ -24,6 +24,7 @@ const MovieList = () => {
       const movie = await response.json();
       setMovie(movie.items)
       let currentIndex = 0; // Initialize the index counter
+      // This is for testing
 
       setSelectedMovie(movie.items[currentIndex]); // Set the selected movie to the first movie in the list
 

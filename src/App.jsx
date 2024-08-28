@@ -27,7 +27,11 @@ function App() {
             
           </MovieContext>
         } />
-          <Route path="/video/:id" element={<Video />} />
+          <Route path="/video/:id" element={
+            <MovieContext>
+              <Form />
+              <Video />
+            </MovieContext>} />
       </Routes>
 
     </>
